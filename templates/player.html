@@ -1,0 +1,27 @@
+{% extends '_base.html' %}
+
+{% block content %}
+    <div id="player">
+        <div>
+            <div>📶 <span id="listeners">{{ listeners }}</span> 🕵️‍♀️ <span>{{ title }}</span></div>
+            <div><span id="now_playing">{{ now_playing }}</span></div>
+        </div>
+        <audio controls autoplay>
+            <source src="{{ stream_url }}" type="audio/mpeg">
+            Your browser does not support the audio element.
+        </audio>
+        <table id="history">
+            {% for song in songs %}
+                <tr><td>{{ song.last_played }}</td><td>{{ song.title }}</td></tr>
+            {% endfor %}
+        </table>
+        <div>
+
+        </div>
+    </div>
+{% endblock %}
+
+{% block script %}
+    <script src="{{ url_for('static', filename='scripts/player.js') }}"></script>
+    <script>setInterval(update_status, 3000, "{{ url_for('history_json') }}")</script>
+{% endblock %}
