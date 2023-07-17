@@ -6,9 +6,7 @@ services:
         restart: unless-stopped
         volumes:
             - '.:/code'
-        command: gunicorn -w 4 -b 0.0.0.0 'app:app'
-        ports:
-            - "8844:8000"
+        command: gunicorn -w 4 -b 0.0.0.0:8000 'app:app'
 
     redis:
         image: redis:7.0-alpine
@@ -32,3 +30,16 @@ services:
         depends_on:
             - redis
             - celery
+
+    caddy:
+        image: caddy:2.6-alpine
+        restart: unless-stopped
+        ports:
+            - "8050:80"
+        volumes:
+            - ./Caddyfile:/etc/caddy/Caddyfile
+            - ./caddy_data:/data
+            - ./caddy_config:/config
+        depends_on:
+            flask:
+                condition: service_started
