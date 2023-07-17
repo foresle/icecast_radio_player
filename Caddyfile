@@ -1,0 +1,3 @@
+:80 {
+    reverse_proxy flask:8000
+}
