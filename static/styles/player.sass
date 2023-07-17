@@ -47,7 +47,12 @@
         animation: linear 4s now_playing_scroll infinite
         white-space: nowrap
 
+  > audio
+    margin-bottom: 10px
+
   > table:nth-child(3)
+    margin-bottom: 10px
+
     > tbody
       > tr
         display: flex
@@ -62,6 +67,12 @@
         > td:last-child
           flex-grow: 40
           text-align: right
+
+  > div:last-child
+    display: flex
+    flex-direction: row
+    justify-content: space-between
+    align-items: center
 
 @keyframes now_playing_scroll
   0%
