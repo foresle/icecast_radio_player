@@ -10,6 +10,15 @@ body {
   justify-content: flex-start;
   font-weight: 400;
   font-family: "Roboto Slab", serif;
+  background-image: radial-gradient(#222222 5%, whitesmoke 5%);
+  background-position: 0 0;
+  background-size: 25px 25px;
+}
+
+@media screen and (min-width: 768px) {
+  body {
+    justify-content: center;
+  }
 }
 
 /*# sourceMappingURL=main.css.map */

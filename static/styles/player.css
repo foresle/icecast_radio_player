@@ -65,6 +65,7 @@
   #player {
     width: 600px;
     height: auto;
+    margin-bottom: 300px;
   }
   #player > div:first-child {
     justify-content: flex-start;
