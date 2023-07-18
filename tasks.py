@@ -14,6 +14,7 @@ env.read_env()
 
 STREAM_URL = env('STREAM_URL')
 STATUS_FILE_URL = env('STATUS_FILE_URL')
+MAX_HISTORY_LENGTH = env.int('MAX_HISTORY_LENGTH', default=5)
 
 
 def save_status_to_file(title: str, listeners: int, listeners_peak: int) -> None:
@@ -54,8 +55,8 @@ def save_status_to_file(title: str, listeners: int, listeners_peak: int) -> None
             'last_played_at': now
         })
 
-    if len(history['songs']) > 6:
-        history['songs'] = history['songs'][-6:]
+    if len(history['songs']) > MAX_HISTORY_LENGTH+1:
+        history['songs'] = history['songs'][-(MAX_HISTORY_LENGTH+1):]
 
     songs = []
     for song in history['songs']:
