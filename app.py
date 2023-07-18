@@ -22,7 +22,7 @@ def player():
         songs = list(reversed(history.get('songs', [])))
 
         if len(songs) > 0:
-            now_playing = songs[-1].get('title', 'now playing')
+            now_playing = songs[0].get('title', 'now playing')
             songs.pop(0)
         else:
             now_playing = 'now playing'
