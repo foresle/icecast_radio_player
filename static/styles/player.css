@@ -28,16 +28,9 @@
   position: relative;
   display: flex;
   flex-direction: row;
-  justify-content: center;
+  justify-content: flex-end;
   align-items: center;
   width: 100%;
-  --left_animation_wrapper: calc(-90vw);
-  --right_animation_wrapper: calc(90vw);
-}
-#player > div:first-child > div:last-child > span {
-  position: absolute;
-  animation: linear 4s now_playing_scroll infinite;
-  white-space: nowrap;
 }
 #player > audio {
   margin-bottom: 10px;
@@ -65,19 +58,10 @@
   align-items: center;
 }
 
-@keyframes now_playing_scroll {
-  0% {
-    transform: translate3d(var(--right_animation_wrapper), 0, 0);
-  }
-  100% {
-    transform: translate3d(var(--left_animation_wrapper), 0, 0);
-  }
-}
 @media screen and (min-width: 768px) {
   #player {
     width: 600px;
     height: auto;
-    margin-bottom: 300px;
   }
   #player > div:first-child {
     justify-content: flex-start;
